@@ -3,6 +3,8 @@
 #include "Vector2D.h"
 #include "Transform.h"
 #include "Warrior.h"
+#include "Input.h"
+#include "Timer.h"
 
 Engine* Engine::s_Instance = nullptr;
 Warrior* player = nullptr;
@@ -22,7 +24,7 @@ bool Engine::Init()
 	}
 
 
-	m_Window = SDL_CreateWindow("HED Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
+	m_Window = SDL_CreateWindow("kedy Engine", SDL_WINDOWPOS_CENTERED, SDL_WINDOWPOS_CENTERED, SCREEN_HEIGHT, SCREEN_HEIGHT, 0);
 	if (m_Window == nullptr) {
 		SDL_Log("Failed to initilaze window: %s", SDL_GetError());
 		return false;
@@ -36,7 +38,9 @@ bool Engine::Init()
 	}
 
 	TextureManeger::GetInstance()->Load("player", "assets/Idle.png");
-	player = new Warrior(new Properties("player", 0, 0, 200, 200));
+	TextureManeger::GetInstance()->Load("player_run", "assets/Run.png");
+
+	player = new Warrior(new Properties("player_run", 0, 0, 200, 200));
 
 
 	
@@ -63,7 +67,8 @@ void Engine::Quit()
 
 void Engine::Update() 
 {
-	player->Update(0);
+	float dt = Timer::GetInstance()->GetDeltaTime();
+	player->Update(dt);
 	
 }
 
@@ -77,14 +82,7 @@ void Engine::Render() {
 
 void Engine::Events()
 {
-	SDL_Event event;
-	SDL_PollEvent(&event);
-	switch (event.type)
-	{
-	case SDL_QUIT:
-		Quit();
-		break;
-	}
+	Input::GetInstance()->Listen();
 
 }
 

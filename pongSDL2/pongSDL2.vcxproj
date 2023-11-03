@@ -23,9 +23,19 @@
     <ClInclude Include="Character.h" />
     <ClInclude Include="Engine.h" />
     <ClInclude Include="GameObject.h" />
+    <ClInclude Include="Input.h" />
     <ClInclude Include="IObject.h" />
+    <ClInclude Include="Layer.h" />
     <ClInclude Include="main.h" />
+    <ClInclude Include="GameMap.h" />
+    <ClInclude Include="MapParser.h" />
+    <ClInclude Include="resource.h" />
+    <ClInclude Include="RigidBody.h" />
     <ClInclude Include="TextureManeger.h" />
+    <ClInclude Include="TileLayer.h" />
+    <ClInclude Include="Timer.h" />
+    <ClInclude Include="tinystr.h" />
+    <ClInclude Include="tinyxml.h" />
     <ClInclude Include="Transform.h" />
     <ClInclude Include="Vector2D.h" />
     <ClInclude Include="Warrior.h" />
@@ -36,10 +46,22 @@
       <LanguageStandard Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">stdcpp17</LanguageStandard>
     </ClCompile>
     <ClCompile Include="GameObject.cpp" />
+    <ClCompile Include="Input.cpp" />
     <ClCompile Include="main.cpp" />
+    <ClCompile Include="MapParser.cpp" />
+    <ClCompile Include="RigidBody.cpp" />
     <ClCompile Include="TextureManeger.cpp" />
+    <ClCompile Include="TileLayer.cpp" />
+    <ClCompile Include="Timer.cpp" />
+    <ClCompile Include="tinystr.cpp" />
+    <ClCompile Include="tinyxml.cpp" />
+    <ClCompile Include="tinyxmlerror.cpp" />
+    <ClCompile Include="tinyxmlparser.cpp" />
     <ClCompile Include="Vector2D.cpp" />
     <ClCompile Include="Warrior.cpp" />
+  </ItemGroup>
+  <ItemGroup>
+    <ResourceCompile Include="kedy2d.rc" />
   </ItemGroup>
   <PropertyGroup Label="Globals">
     <VCProjectVersion>17.0</VCProjectVersion>
